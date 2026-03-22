@@ -1,135 +1,343 @@
+from textwrap import dedent
+
+html = dedent("""
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meyer Enterprises Training Portal</title>
-
-<style>
-body {
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0b0c10;
-  color:#f5f5f5;
-}
-
-.container {
-  max-width:500px;
-  margin:auto;
-  padding:20px;
-}
-
-.header {
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.header h1 {
-  color:#d4af37;
-}
-
-.card {
-  background:#111;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:12px;
-}
-
-input {
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-  border-radius:8px;
-  border:none;
-}
-
-button {
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:#d4af37;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meyer Enterprises | Luxury Driver Training Portal</title>
+  <style>
+    :root{
+      --bg:#0a0c12;
+      --panel:#11141c;
+      --panel2:#161b25;
+      --gold:#c6a86a;
+      --gold-soft:#e5d3aa;
+      --text:#f5f1e8;
+      --muted:#b6ad9a;
+      --line:rgba(198,168,106,.28);
+      --success:#8fd3b6;
+      --danger:#ffb2a8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(198,168,106,.10), transparent 28%),
+        linear-gradient(180deg,#080a0f 0%, #0d1017 45%, #090b10 100%);
+      min-height:100vh;
+    }
+    .wrap{max-width:540px;margin:0 auto;padding:18px 14px 40px;}
+    .hero{
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:22px 18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:0 18px 45px rgba(0,0,0,.35);
+      position:relative;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg, rgba(198,168,106,.08), transparent 36%, transparent 64%, rgba(198,168,106,.06));
+      pointer-events:none;
+    }
+    .badge{
+      display:inline-block;border:1px solid var(--line);color:var(--gold-soft);
+      padding:8px 12px;border-radius:999px;font-size:.78rem;letter-spacing:.14em;
+      text-transform:uppercase;background:rgba(198,168,106,.08);
+    }
+    .brand{margin-top:14px;font-size:2rem;font-weight:800;letter-spacing:.02em;}
+    .program{margin-top:6px;font-size:1rem;color:var(--muted);}
+    .meta{display:grid;gap:10px;margin-top:18px;}
+    .item{
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;padding:12px 14px;
+    }
+    .label{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;}
+    .value{font-weight:700;}
+    .card{
+      margin-top:14px;border:1px solid var(--line);border-radius:24px;
+      background:linear-gradient(180deg, rgba(17,20,28,.96), rgba(22,27,37,.96));
+      padding:18px 16px;box-shadow:0 12px 32px rgba(0,0,0,.22);
+    }
+    h2{margin:0 0 10px;color:var(--gold-soft);font-size:1.08rem;}
+    p{margin:8px 0;line-height:1.55;}
+    ul,ol{margin:10px 0 0;padding-left:20px;}
+    li{margin:8px 0;color:#efe8d8;}
+    .standards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+    .stat{
+      border:1px solid rgba(198,168,106,.22);border-radius:18px;padding:12px;
+      background:rgba(255,255,255,.02);
+    }
+    .big{font-size:1.08rem;font-weight:800;color:var(--gold-soft);}
+    .small{color:var(--muted);margin-top:4px;font-size:.86rem;}
+    input{
+      width:100%;margin-top:6px;background:#0b0e14;border:1px solid rgba(198,168,106,.20);
+      border-radius:14px;padding:13px 12px;color:var(--text);font-size:1rem;
+    }
+    button{
+      width:100%;margin-top:14px;border:none;border-radius:16px;padding:14px;font-size:1rem;
+      font-weight:800;color:#111;background:linear-gradient(90deg, #b28d4d, #e5d3aa);
+      box-shadow:0 10px 22px rgba(198,168,106,.18);cursor:pointer;
+    }
+    .status{
+      margin-top:12px;border-radius:16px;padding:12px 14px;border:1px solid rgba(198,168,106,.18);
+      background:rgba(255,255,255,.03);font-weight:700;
+    }
+    .pass{color:var(--success);}
+    .fail{color:var(--danger);}
+    .ack{background:rgba(198,168,106,.04);}
+    .cert{
+      border:1px solid rgba(229,211,170,.35);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)),
+        radial-gradient(circle at top, rgba(198,168,106,.10), transparent 44%);
+    }
+    .cert-title{text-align:center;font-size:1.2rem;font-weight:800;color:var(--gold-soft);margin-bottom:8px;}
+    .center{text-align:center;}
+    .footer{margin-top:14px;text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;}
+    canvas{
+      width:100%;height:170px;background:#0b0e14;border-radius:16px;
+      border:1px solid rgba(198,168,106,.20);touch-action:none;display:block;
+    }
+    .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .secondary{
+      background:#171b24;color:var(--gold-soft);border:1px solid rgba(198,168,106,.24);box-shadow:none;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="badge">Private Training Portal</div>
+      <div class="brand">Meyer Enterprises</div>
+      <div class="program">Luxury Driver Training & Certification Portal</div>
+      <div class="meta">
+        <div class="item">
+          <div class="label">Training Coordinators</div>
+          <div class="value">Britney Dews • Rayshannette Watson</div>
+        </div>
+        <div class="item">
+          <div class="label">Access Level</div>
+          <div class="value">New Hire Onboarding • Route Readiness</div>
+        </div>
+      </div>
+    </div>
 
-<div class="container">
+    <div class="card">
+      <h2>Program Overview</h2>
+      <p>This portal is designed to prepare drivers for independent route work with a focus on presentation, safety, delivery accuracy, and operational discipline.</p>
+      <div class="standards">
+        <div class="stat"><div class="big">100%</div><div class="small">Delivery Accuracy</div></div>
+        <div class="stat"><div class="big">20–30</div><div class="small">Stops per Hour</div></div>
+        <div class="stat"><div class="big">Zero</div><div class="small">Safety Violations</div></div>
+        <div class="stat"><div class="big">Professional</div><div class="small">Customer Conduct</div></div>
+      </div>
+    </div>
 
-<div class="header">
-<h1>Meyer Enterprises</h1>
-<p>Driver Training Portal</p>
-<p>Trainers: Britney Dews & Rayshannette Watson</p>
-</div>
+    <div class="card">
+      <h2>Pre-Trip Standards</h2>
+      <ul>
+        <li>Inspect tires, lights, brakes, mirrors, fuel level, and cargo area.</li>
+        <li>Confirm scanner and phone are fully charged.</li>
+        <li>Organize packages in practical stop order.</li>
+        <li>Do not depart until the vehicle is route-ready.</li>
+      </ul>
+    </div>
 
-<div class="card">
-<h2>Pre-Trip Inspection</h2>
-<ul>
-<li>Check tires</li>
-<li>Check lights</li>
-<li>Check fuel</li>
-<li>Organize packages</li>
-</ul>
-</div>
+    <div class="card">
+      <h2>Delivery Standards</h2>
+      <ol>
+        <li>Park safely and legally.</li>
+        <li>Select the correct package.</li>
+        <li>Verify the address twice.</li>
+        <li>Deliver to a safe location.</li>
+        <li>Scan every package correctly.</li>
+        <li>Take a delivery photo when required.</li>
+      </ol>
+    </div>
 
-<div class="card">
-<h2>Delivery Rules</h2>
-<ul>
-<li>Verify address</li>
-<li>Scan every package</li>
-<li>Take photo if required</li>
-<li>Never enter customer home</li>
-</ul>
-</div>
+    <div class="card">
+      <h2>Safety Expectations</h2>
+      <ul>
+        <li>Seatbelt must be worn at all times.</li>
+        <li>No phone use while driving.</li>
+        <li>Never enter a customer's home.</li>
+        <li>Do not leave packages in unsafe locations.</li>
+        <li>Code and report all undelivered packages correctly.</li>
+      </ul>
+    </div>
 
-<div class="card">
-<h2>Quick Quiz</h2>
+    <div class="card">
+      <h2>Field Situations</h2>
+      <ul>
+        <li><b>Dog present:</b> stay calm, do not run, return to vehicle if necessary.</li>
+        <li><b>No safe delivery point:</b> do not risk the package; mark undelivered.</li>
+        <li><b>Customer conflict:</b> remain professional, do not argue, escalate if needed.</li>
+      </ul>
+    </div>
 
-<label>What comes first before driving?</label>
-<input id="q1">
+    <div class="card">
+      <h2>Knowledge Check</h2>
+      <p>A minimum score of <b>4 out of 5</b> is required.</p>
+      <label>1. What is the first step before driving?</label>
+      <input id="q1" placeholder="Enter answer">
+      <label>2. What should you do if a dog is outside?</label>
+      <input id="q2" placeholder="Enter answer">
+      <label>3. Which matters more: speed or safety?</label>
+      <input id="q3" placeholder="Enter answer">
+      <label>4. When should a package be scanned?</label>
+      <input id="q4" placeholder="Enter answer">
+      <label>5. Can you enter a customer's home?</label>
+      <input id="q5" placeholder="Enter answer">
+      <button onclick="gradeQuiz()">Grade Assessment</button>
+      <div id="result" class="status">Status: Awaiting completion</div>
+    </div>
 
-<label>What matters most?</label>
-<input id="q2">
+    <div class="card ack">
+      <h2>Driver Acknowledgment</h2>
+      <p>I acknowledge that I have reviewed and understand the Meyer Enterprises training standards and agree to follow all route, safety, and conduct procedures.</p>
+      <label>Driver Name</label>
+      <input id="driverName" placeholder="Enter full name">
+      <label>Date</label>
+      <input id="dateField" placeholder="Enter date">
+    </div>
 
-<button onclick="grade()">Submit</button>
+    <div class="card">
+      <h2>Mobile Signature</h2>
+      <p>Sign below to complete certification from your phone.</p>
+      <canvas id="sigCanvas"></canvas>
+      <div class="btn-row">
+        <button class="secondary" type="button" onclick="clearSig()">Clear Signature</button>
+        <button type="button" onclick="saveSig()">Save Signature</button>
+      </div>
+      <div id="sigStatus" class="status">Signature status: Not saved</div>
+    </div>
 
-<p id="result"></p>
-</div>
+    <div class="card cert">
+      <div class="cert-title">Certificate of Training Completion</div>
+      <p class="center">This certifies that the individual named below has completed the Meyer Enterprises driver training portal.</p>
+      <p><b>Driver Name:</b> <span id="certName">__________________________</span></p>
+      <p><b>Date Completed:</b> <span id="certDate">__________________________</span></p>
+      <p><b>Training Coordinators:</b> Britney Dews and Rayshannette Watson</p>
+      <p><b>Assessment Status:</b> <span id="certStatus">Pending</span></p>
+      <p><b>Signature:</b></p>
+      <img id="sigPreview" style="display:none;width:100%;max-height:130px;object-fit:contain;border:1px solid rgba(198,168,106,.20);border-radius:14px;background:#0b0e14;padding:8px" />
+    </div>
 
-<div class="card">
-<h2>Signature</h2>
-
-<label>Name</label>
-<input id="name">
-
-<label>Date</label>
-<input id="date">
-
-<button onclick="complete()">Complete Training</button>
-<p id="completeMsg"></p>
-</div>
-
-</div>
+    <div class="footer">Meyer Enterprises • Premium Driver Training Portal</div>
+  </div>
 
 <script>
-function grade(){
-  let score = 0;
-  if(document.getElementById('q1').value.toLowerCase().includes('inspect')) score++;
-  if(document.getElementById('q2').value.toLowerCase().includes('safety')) score++;
+function includesAny(text, terms){
+  const t = (text || "").toLowerCase().trim();
+  return terms.some(term => t.includes(term));
+}
+function updateCertificate(){
+  const driverName = document.getElementById("driverName").value || "__________________________";
+  const dateValue = document.getElementById("dateField").value || "__________________________";
+  document.getElementById("certName").textContent = driverName;
+  document.getElementById("certDate").textContent = dateValue;
+}
+document.getElementById("driverName").addEventListener("input", updateCertificate);
+document.getElementById("dateField").addEventListener("input", updateCertificate);
 
-  document.getElementById('result').innerText =
-    score >= 1 ? "Passed" : "Try Again";
+function gradeQuiz(){
+  const q1 = document.getElementById("q1").value;
+  const q2 = document.getElementById("q2").value;
+  const q3 = document.getElementById("q3").value;
+  const q4 = document.getElementById("q4").value;
+  const q5 = document.getElementById("q5").value;
+  let score = 0;
+  if (includesAny(q1, ["inspect", "inspection", "pre-trip", "vehicle check", "check"])) score++;
+  if (includesAny(q2, ["stay calm", "do not run", "don't run", "return to", "truck"])) score++;
+  if (includesAny(q3, ["safety"])) score++;
+  if (includesAny(q4, ["every package", "every delivery", "each delivery", "each package", "at every stop"])) score++;
+  if (includesAny(q5, ["no", "never"])) score++;
+  const passed = score >= 4;
+  const result = document.getElementById("result");
+  result.className = "status " + (passed ? "pass" : "fail");
+  result.innerHTML = "<b>Score:</b> " + score + "/5 — " + (passed ? "Passed" : "Not Passed");
+  document.getElementById("certStatus").textContent = passed ? "Completed" : "Pending";
+  updateCertificate();
 }
 
-function complete(){
-  let name = document.getElementById('name').value;
-  document.getElementById('completeMsg').innerText =
-    "Training Completed by " + name;
+const canvas = document.getElementById("sigCanvas");
+const ctx = canvas.getContext("2d");
+let drawing = false;
+let hasSigned = false;
+
+function resizeCanvas(){
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#e5d3aa";
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function getPos(e){
+  const rect = canvas.getBoundingClientRect();
+  if (e.touches && e.touches.length){
+    return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+  }
+  return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+function startDraw(e){
+  e.preventDefault();
+  drawing = true;
+  const p = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(p.x, p.y);
+}
+function moveDraw(e){
+  if (!drawing) return;
+  e.preventDefault();
+  const p = getPos(e);
+  ctx.lineTo(p.x, p.y);
+  ctx.stroke();
+  hasSigned = true;
+}
+function endDraw(){ drawing = false; }
+canvas.addEventListener("mousedown", startDraw);
+canvas.addEventListener("mousemove", moveDraw);
+canvas.addEventListener("mouseup", endDraw);
+canvas.addEventListener("mouseleave", endDraw);
+canvas.addEventListener("touchstart", startDraw, {passive:false});
+canvas.addEventListener("touchmove", moveDraw, {passive:false});
+canvas.addEventListener("touchend", endDraw);
+
+function clearSig(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasSigned = false;
+  document.getElementById("sigStatus").textContent = "Signature status: Not saved";
+  document.getElementById("sigPreview").style.display = "none";
+}
+function saveSig(){
+  if (!hasSigned){
+    document.getElementById("sigStatus").textContent = "Signature status: Please sign before saving";
+    return;
+  }
+  const url = canvas.toDataURL("image/png");
+  const img = document.getElementById("sigPreview");
+  img.src = url;
+  img.style.display = "block";
+  document.getElementById("sigStatus").textContent = "Signature status: Saved to certificate";
 }
 </script>
-
 </body>
 </html>
+""")
+
+path = "/mnt/data/meyer_enterprises_full_luxury_portal.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+print(path)
