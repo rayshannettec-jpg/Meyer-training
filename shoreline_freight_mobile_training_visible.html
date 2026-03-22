@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shoreline Freight Mobile Training</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#0f172a;
+      color:#f8fafc;
+      line-height:1.5;
+    }
+    .wrap{
+      max-width:430px;
+      margin:0 auto;
+      padding:16px;
+    }
+    .header{
+      position:sticky;
+      top:0;
+      background:#0f172a;
+      padding-bottom:12px;
+    }
+    .brand{
+      font-size:24px;
+      font-weight:700;
+      margin:8px 0 4px;
+    }
+    .sub{
+      color:#cbd5e1;
+      margin-bottom:12px;
+    }
+    .card{
+      background:#1e293b;
+      border:1px solid #334155;
+      border-radius:18px;
+      padding:18px;
+      margin:14px 0;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:22px;
+    }
+    h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+    p{
+      margin:8px 0;
+    }
+    ul, ol{
+      padding-left:22px;
+      margin:10px 0;
+    }
+    li{
+      margin:8px 0;
+    }
+    .pill{
+      display:inline-block;
+      background:#0ea5e9;
+      color:#082f49;
+      font-weight:700;
+      padding:8px 12px;
+      border-radius:999px;
+      margin-top:10px;
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:10px 0 16px;
+    }
+    .nav a{
+      text-decoration:none;
+      background:#334155;
+      color:#f8fafc;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:14px;
+    }
+    .quizq{
+      margin:14px 0;
+      padding:12px;
+      background:#0f172a;
+      border-radius:12px;
+      border:1px solid #334155;
+    }
+    .line{
+      margin-top:8px;
+      border-bottom:1px solid #94a3b8;
+      height:24px;
+    }
+    .cert{
+      border:2px solid #38bdf8;
+      border-radius:16px;
+      padding:16px;
+      background:#082f49;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">Shoreline Freight LLC</div>
+      <div class="sub">Mobile Driver Training</div>
+      <div class="nav">
+        <a href="#welcome">Welcome</a>
+        <a href="#goal">Goals</a>
+        <a href="#pretrip">Pre-Trip</a>
+        <a href="#loading">Loading</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#rules">Rules</a>
+        <a href="#situations">Situations</a>
+        <a href="#efficiency">Efficiency</a>
+        <a href="#endday">End of Day</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#cert">Certificate</a>
+      </div>
+    </div>
+
+    <div class="card" id="welcome">
+      <h2>🚛 Welcome</h2>
+      <p>Welcome to <b>Shoreline Freight</b>.</p>
+      <p>Your job is to deliver packages safely, efficiently, and accurately.</p>
+      <div class="pill">Professional standard starts on Day 1</div>
+    </div>
+
+    <div class="card" id="goal">
+      <h2>🎯 Your Daily Goal</h2>
+      <ul>
+        <li><b>100% delivery accuracy</b></li>
+        <li><b>20–30 stops per hour</b></li>
+        <li><b>Zero safety violations</b></li>
+      </ul>
+      <p><b>Speed matters, but safety comes first.</b></p>
+    </div>
+
+    <div class="card" id="pretrip">
+      <h2>🔧 Pre-Trip Check</h2>
+      <ul>
+        <li>Inspect tires, lights, brakes, and mirrors</li>
+        <li>Check fuel level</li>
+        <li>Confirm scanner and phone are charged</li>
+        <li>Do not leave until inspection is complete</li>
+      </ul>
+    </div>
+
+    <div class="card" id="loading">
+      <h2>📦 Loading the Truck</h2>
+      <ul>
+        <li>Load packages in stop order</li>
+        <li>Group by street, zone, or apartment complex</li>
+        <li>Keep your next stops easy to reach</li>
+      </ul>
+      <p><b>Messy truck = slow day.</b></p>
+    </div>
+
+    <div class="card" id="delivery">
+      <h2>🚪 Every Delivery</h2>
+      <ol>
+        <li>Park safely</li>
+        <li>Grab the correct package</li>
+        <li>Check the address twice</li>
+        <li>Deliver to a safe location</li>
+        <li>Scan the package</li>
+        <li>Take a photo if required</li>
+      </ol>
+    </div>
+
+    <div class="card" id="rules">
+      <h2>⚠️ Non-Negotiable Rules</h2>
+      <ul>
+        <li>Seatbelt at all times</li>
+        <li>No phone use while driving</li>
+        <li>No unsafe rushing</li>
+        <li>Never enter customer homes</li>
+        <li>Always scan the package</li>
+      </ul>
+    </div>
+
+    <div class="card" id="situations">
+      <h2>🐕 Real-World Situations</h2>
+      <ul>
+        <li><b>Dog outside:</b> stay calm, do not run, return to truck if needed</li>
+        <li><b>No safe drop spot:</b> mark undelivered</li>
+        <li><b>Upset customer:</b> stay professional, do not argue</li>
+      </ul>
+    </div>
+
+    <div class="card" id="efficiency">
+      <h2>🧠 Efficiency Mode</h2>
+      <ul>
+        <li>Stay on one side of the street</li>
+        <li>Group nearby stops</li>
+        <li>Walk fast, do not run</li>
+        <li>Avoid doubling back</li>
+      </ul>
+      <p><b>Smart drivers save time without cutting corners.</b></p>
+    </div>
+
+    <div class="card" id="endday">
+      <h2>🌙 End of Day</h2>
+      <ul>
+        <li>All packages delivered or accounted for</li>
+        <li>Undelivered packages coded correctly</li>
+        <li>Truck cleared out</li>
+        <li>Equipment returned</li>
+      </ul>
+    </div>
+
+    <div class="card" id="quiz">
+      <h2>🧪 Quick Quiz</h2>
+      <div class="quizq">
+        <h3>1. What is the first thing before driving?</h3>
+        <div class="line"></div>
+      </div>
+      <div class="quizq">
+        <h3>2. What do you do if a dog is outside?</h3>
+        <div class="line"></div>
+      </div>
+      <div class="quizq">
+        <h3>3. Which matters more: speed or safety?</h3>
+        <div class="line"></div>
+      </div>
+      <div class="quizq">
+        <h3>4. When do you scan a package?</h3>
+        <div class="line"></div>
+      </div>
+      <div class="quizq">
+        <h3>5. Can you enter a customer's home?</h3>
+        <div class="line"></div>
+      </div>
+      <p><b>Answer key:</b> pre-trip inspection; stay calm/do not run; safety; every package at every delivery; no.</p>
+    </div>
+
+    <div class="card" id="cert">
+      <h2>🏆 Certificate</h2>
+      <div class="cert">
+        <p><b>Certificate of Training Completion</b></p>
+        <p>This certifies completion of Shoreline Freight mobile driver training.</p>
+        <p>Driver Name: __________________________</p>
+        <p>Date: _________________________________</p>
+        <p>Instructor/Manager: ____________________</p>
+        <p>Signature: _____________________________</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
