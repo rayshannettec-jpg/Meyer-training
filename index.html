@@ -1,4 +1,4 @@
-from textwrap import dedent
+
 
 html = dedent("""
 <!DOCTYPE html>
@@ -336,8 +336,4 @@ function saveSig(){
 </html>
 """)
 
-path = "/mnt/data/meyer_enterprises_full_luxury_portal.html"
-with open(path, "w", encoding="utf-8") as f:
-    f.write(html)
 
-print(path)
